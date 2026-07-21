@@ -1,7 +1,4 @@
-# PDK (symlink, no subir)
 pdk/
-
-# Synopsys generated
 *.pvl
 *.syn
 *.mr
@@ -12,15 +9,9 @@ alib-52/
 *.daidir/
 csrc/
 simv
-simv.daidir/
 AN.DB/
 default.svf
 command.log
-
-# ICC2
-*.dlib
 *.nlib
-
-# Large files
 *.gds
 *.oas
