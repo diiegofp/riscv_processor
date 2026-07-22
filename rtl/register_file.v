@@ -13,12 +13,21 @@ module register_file (
         if (reg_wr && rd_addr) registers[rd_addr] <= rd_data;
     end
 
-    always @(*) begin //lectura
-        if (!rs1_addr) rs1_data = 0;
-        else  rs1_data = registers[rs1_addr];
+    always @(*) begin
+    // lectura rs1
+    if (!rs1_addr)
+        rs1_data = 32'b0;
+    else if (reg_wr && rd_addr == rs1_addr)
+        rs1_data = rd_data;
+    else
+        rs1_data = registers[rs1_addr];
 
-        if (!rs2_addr) rs2_data = 0;
-        else  rs2_data = registers[rs2_addr];
-
-        end
+    // lectura rs2
+    if (!rs2_addr)
+        rs2_data = 32'b0;
+    else if (reg_wr && rd_addr == rs2_addr)
+        rs2_data = rd_data;
+    else
+        rs2_data = registers[rs2_addr];
+    end
 endmodule
