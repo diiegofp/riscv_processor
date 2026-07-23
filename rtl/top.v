@@ -3,10 +3,6 @@ module top (
     input rst_n
 );
 
-    // ============================================================
-    // WIRES
-    // ============================================================
-
     wire [31:0] pc_out, pc_next, pc_plus4, instr;
     wire [31:0] branch_target;
 
@@ -50,10 +46,7 @@ module top (
     wire stall, hazard_flush;
     wire pipeline_flush;
 
-    // ============================================================
     // FETCH STAGE
-    // ============================================================
-
     assign pc_plus4 = pc_out + 32'd4;
     assign pc_next = (branch_taken) ? branch_target : pc_plus4;
     assign branch_target = (idex_jump && idex_alu_src) ?
@@ -74,10 +67,7 @@ module top (
         .instr (instr)
     );
 
-    // ============================================================
     // IF/ID PIPELINE REGISTER
-    // ============================================================
-
     pipe_if_id u_pipe_if_id (
         .clk       (clk),
         .rst_n     (rst_n),
@@ -89,10 +79,8 @@ module top (
         .instr_out (ifid_instr)
     );
 
-    // ============================================================
-    // DECODE STAGE
-    // ============================================================
 
+    // DECODE STAGE
     control_unit u_control (
         .opcode    (ifid_instr[6:0]),
         .reg_write (ctrl_reg_write),
@@ -122,10 +110,7 @@ module top (
         .imm_out (imm)
     );
 
-    // ============================================================
     // ID/EX PIPELINE REGISTER
-    // ============================================================
-
     pipe_id_ex u_pipe_id_ex (
         .clk           (clk),
         .rst_n         (rst_n),
@@ -166,9 +151,8 @@ module top (
         .alu_op_out    (idex_alu_op)
     );
 
-    // ============================================================
+
     // EXECUTE STAGE
-    // ============================================================
 
     assign fwd_a_data = (forward_a == 2'b10) ? exmem_alu_result :
                         (forward_a == 2'b01) ? wb_data :
@@ -228,10 +212,8 @@ module top (
         .flush        (hazard_flush)
     );
 
-    // ============================================================
-    // EX/MEM PIPELINE REGISTER
-    // ============================================================
 
+    // EX/MEM PIPELINE REGISTER
     pipe_ex_mem u_pipe_ex_mem (
         .clk            (clk),
         .rst_n          (rst_n),
@@ -255,10 +237,7 @@ module top (
         .jump_out       (exmem_jump)
     );
 
-    // ============================================================
     // MEMORY STAGE
-    // ============================================================
-
     data_mem u_data_mem (
         .clk        (clk),
         .mem_read   (exmem_mem_read),
@@ -268,10 +247,8 @@ module top (
         .read_data  (mem_read_data)
     );
 
-    // ============================================================
-    // MEM/WB PIPELINE REGISTER
-    // ============================================================
 
+    // MEM/WB PIPELINE REGISTER
     pipe_mem_wb u_pipe_mem_wb (
         .clk            (clk),
         .rst_n          (rst_n),
@@ -291,10 +268,7 @@ module top (
         .jump_out       (memwb_jump)
     );
 
-    // ============================================================
     // WRITE BACK STAGE
-    // ============================================================
-
     assign wb_data = memwb_jump      ? memwb_pc_plus4 :
                      memwb_mem_to_reg ? memwb_mem_data :
                      memwb_alu_result;
