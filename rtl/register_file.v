@@ -8,6 +8,13 @@ module register_file (
 
     reg [31:0] registers [0:31]; //32 registros de 32 bits
 
+    integer i;
+    
+    initial begin
+        for (i = 0; i < 32; i = i + 1)
+            registers[i] = 32'b0;
+    end
+
     always @(posedge clk) //escritura
     begin
         if (reg_wr && rd_addr) registers[rd_addr] <= rd_data;

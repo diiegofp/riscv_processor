@@ -44,7 +44,8 @@ module top (
     wire [31:0] wb_data;
 
     wire stall, hazard_flush;
-    wire pipeline_flush;
+    wire ifid_flush = branch_taken;           // IF/ID: solo flush por branch
+    wire idex_flush = branch_taken | hazard_flush; // ID/EX: flush por branch o hazard
 
     // FETCH STAGE
     assign pc_plus4 = pc_out + 32'd4;
@@ -52,6 +53,7 @@ module top (
     assign branch_target = (idex_jump && idex_alu_src) ?
                            alu_result :
                            idex_pc + idex_imm;
+
     assign pipeline_flush = branch_taken | hazard_flush;
 
     pc u_pc (
@@ -72,7 +74,7 @@ module top (
         .clk       (clk),
         .rst_n     (rst_n),
         .stall     (stall),
-        .flush     (pipeline_flush),
+        .flush     (ifid_flush),
         .pc_in     (pc_out),
         .instr_in  (instr),
         .pc_out    (ifid_pc),
@@ -114,7 +116,7 @@ module top (
     pipe_id_ex u_pipe_id_ex (
         .clk           (clk),
         .rst_n         (rst_n),
-        .flush         (pipeline_flush),
+        .flush         (idex_flush),
         .pc_in         (ifid_pc),
         .rs1_data_in   (rs1_data),
         .rs2_data_in   (rs2_data),
