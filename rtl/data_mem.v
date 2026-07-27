@@ -7,15 +7,17 @@ module data_mem (
     output [31:0] read_data
 );
 
-    reg [31:0] memory [0:255];
-
-    wire [7:0] word_addr = addr[9:2];
-
-    assign read_data = mem_read ? memory[word_addr] : 32'b0;
-
-    always @(posedge clk) begin
-        if (mem_write)
-            memory[word_addr] <= write_data;
-    end
+    SRAMLP1RW256x32 u_dmem (
+        .CE  (clk),
+        .A   (addr[9:2]),
+        .I   (write_data),
+        .O   (read_data),
+        .CSB (~(mem_read | mem_write)),
+        .WEB (~mem_write),
+        .OEB (~mem_read),
+        .DS  (1'b0),
+        .LS  (1'b0),
+        .SD  (1'b0)
+    );
 
 endmodule

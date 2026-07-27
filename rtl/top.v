@@ -1,6 +1,9 @@
 module top (
-    input clk,
-    input rst_n
+    input         clk,
+    input         rst_n,
+    output [31:0] pc_debug,
+    output [31:0] alu_debug,
+    output [31:0] wb_data_debug
 );
 
     wire [31:0] pc_out, pc_next, pc_plus4, instr;
@@ -56,6 +59,10 @@ module top (
 
     assign pipeline_flush = branch_taken | hazard_flush;
 
+    assign pc_debug      = pc_out;
+    assign alu_debug     = alu_result;
+    assign wb_data_debug = wb_data;
+
     pc u_pc (
         .clk     (clk),
         .rst_n   (rst_n),
@@ -65,10 +72,11 @@ module top (
     );
 
     instr_mem u_instr_mem (
+        .clk   (clk),
         .addr  (pc_out),
         .instr (instr)
     );
-
+    
     // IF/ID PIPELINE REGISTER
     pipe_if_id u_pipe_if_id (
         .clk       (clk),
