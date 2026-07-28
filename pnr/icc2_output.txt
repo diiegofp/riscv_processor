@@ -1,0 +1,85 @@
+ 
+                              IC Compiler II (TM)
+
+                Version W-2024.09-SP3 for linux64 - Jan 16, 2025
+  This release has significant feature enhancements. Please review the Release
+                       Notes associated with this release.
+
+                    Copyright (c) 1988 - 2025 Synopsys, Inc.
+   This software and the associated documentation are proprietary to Synopsys,
+ Inc. This software may only be used in accordance with the terms and conditions
+ of a written license agreement with Synopsys, Inc. All other use, reproduction,
+   or distribution of this software is strictly prohibited.  Licensed Products
+     communicate with Synopsys servers for the purpose of providing software
+    updates, detecting software piracy and verifying that customers are using
+    Licensed Products in conformity with the applicable License Key for such
+  Licensed Products. Synopsys will use information gathered in connection with
+    this process to deliver software updates and pursue software pirates and
+                                   infringers.
+
+ Inclusivity & Diversity - Visit SolvNetPlus to read the "Synopsys Statement on
+            Inclusivity and Diversity" (Refer to article 000036315 at
+                        https://solvnetplus.synopsys.com)
+
+Information: Term was not able to be set up using xterm-256color . Using "xterm" by default instead. (CLE-10)
+Error: could not open script file "../scripts/icc2_floorplan.tcl" (CMD-015)
+icc2_shell> set pdk_path "/home/synuser17/riscv/pdk"
+/home/synuser17/riscv/pdk
+icc2_shell> create_lib riscv_top.dlib -technology $pdk_path/tech/saed32nm_1p9m.tf -ref_libs [list $pdk_path/CLIBs/saed32_hvt.ndm $pdk_path/CLIBs/saed32_rvt.ndm $pdk_path/CLIBs/saed32_lvt.ndm $pdk_path/CLIBs/saed32_sram_lp.ndm]
+Information: Loading technology file '/home/synuser17/riscv/pdk/tech/saed32nm_1p9m.tf' (FILE-007)
+{riscv_top.dlib}
+icc2_shell> start_gui
+icc2_shell> start_gui
+icc2_shell> set pdk_path "/home/synuser17/riscv/pdk"
+/home/synuser17/riscv/pdk
+icc2_shell> create_lib riscv_top.dlib -technology $pdk_path/tech/saed32nm_1p9m.tf -ref_libs [list $pdk_path/CLIBs/saed32_hvt.ndm $pdk_path/CLIBs/saed32_rvt.ndm $pdk_path/CLIBs/saed32_lvt.ndm $pdk_path/CLIBs/saed32_sram_lp.ndm]
+Error: Library 'riscv_top.dlib' already exists (LIB-006)
+Error: problem in create_lib
+        Use error_info for more info. (CMD-013)
+icc2_shell> file delete -force riscv_top.dlib
+icc2_shell> create_lib riscv_top.dlib -technology $pdk_path/tech/saed32nm_1p9m.tf -ref_libs [list $pdk_path/CLIBs/saed32_hvt.ndm $pdk_path/CLIBs/saed32_rvt.ndm $pdk_path/CLIBs/saed32_lvt.ndm $pdk_path/CLIBs/saed32_sram_lp.ndm]
+Error: Library 'riscv_top.dlib' already exists (LIB-006)
+Error: problem in create_lib
+        Use error_info for more info. (CMD-013)
+icc2_shell> close_lib -force
+Closing library 'riscv_top.dlib'
+1
+icc2_shell> file delete -force riscv_top.dlib
+icc2_shell> create_lib riscv_top.dlib -technology $pdk_path/tech/saed32nm_1p9m.tf -ref_libs [list $pdk_path/CLIBs/saed32_hvt.ndm $pdk_path/CLIBs/saed32_rvt.ndm $pdk_path/CLIBs/saed32_lvt.ndm $pdk_path/CLIBs/saed32_sram_lp.ndm]
+Information: Loading technology file '/home/synuser17/riscv/pdk/tech/saed32nm_1p9m.tf' (FILE-007)
+{riscv_top.dlib}
+icc2_shell> read_verilog /home/synuser17/riscv/syn/top_syn.v
+Loading verilog file '/home/synuser17/riscv/syn/top_syn.v'
+Information: Reading Verilog into new design 'top' in library 'riscv_top.dlib'. (VR-012)
+Number of modules read: 2
+Top level ports: 98
+Total ports in all modules: 212
+Total nets in all modules: 8030
+Total instances in all modules: 7091
+Elapsed = 00:00:01.20, CPU = 00:00:00.31
+1
+icc2_shell> link_block
+icc2_shell> link_block
+Warning: Block 'riscv_top.dlib:top.design' is already linked. (LNK-067)
+0
+icc2_shell> read_sdc /home/synuser17/riscv/syn/top.sdc
+Information: Loading SDC version 2.1 file '/home/synuser17/riscv/syn/top.sdc' (FILE-007)
+Warning: Constraint 'set_max_area' is not supported by icc2. (SDC-3)
+Information: Timer using 1 threads
+
+
+Summary of unsupported constraints:
+Information: Ignored 1 unsupported 'set_max_area' constraint. (SDC-4)
+1
+icc2_shell> get_lib_cells saed32_sram_lp/*
+{saed32_sram_lp/SRAMLP1RW64x32 saed32_sram_lp/SRAMLP1RW64x8 saed32_sram_lp/SRAMLP2RW128x16 saed32_sram_lp/SRAMLP2RW32x4 saed32_sram_lp/SRAMLP2RW64x32 saed32_sram_lp/SRAMLP2RW64x8}
+icc2_shell> close_lib -force
+Closing library 'riscv_top.dlib'
+1
+icc2_shell> exit
+Maximum memory usage for this session: 605.18 MB
+Maximum memory usage for this session including child processes: 605.18 MB
+CPU usage for this session:     81 seconds (  0.02 hours)
+Elapsed time for this session:    766 seconds (  0.21 hours)
+Thank you for using IC Compiler II.
+

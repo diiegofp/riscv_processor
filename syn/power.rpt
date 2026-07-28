@@ -4,7 +4,7 @@ Report : power
         -analysis_effort low
 Design : top
 Version: W-2024.09-SP5-1
-Date   : Mon Jul 27 16:18:01 2026
+Date   : Mon Jul 27 17:59:52 2026
 ****************************************
 
 
@@ -21,7 +21,7 @@ Wire Load Model Mode: enclosed
 
 Design        Wire Load Model            Library
 ------------------------------------------------
-top                    140000            saed32hvt_ss0p75v125c
+top                    70000             saed32hvt_ss0p75v125c
 register_file          16000             saed32hvt_ss0p75v125c
 
 
@@ -39,24 +39,24 @@ Attributes
 i - Including register clock pin internal power
 
 
-  Cell Internal Power  = 475.8217 uW   (99%)
-  Net Switching Power  =   5.2195 uW    (1%)
+  Cell Internal Power  = 469.2426 uW   (99%)
+  Net Switching Power  =   4.5751 uW    (1%)
                          ---------
-Total Dynamic Power    = 481.0412 uW  (100%)
+Total Dynamic Power    = 473.8178 uW  (100%)
 
-Cell Leakage Power     = 489.5074 uW
+Cell Leakage Power     = 504.9324 uW
 
 
                  Internal         Switching           Leakage            Total
 Power Group      Power            Power               Power              Power   (   %    )  Attrs
 --------------------------------------------------------------------------------------------------
 io_pad             0.0000            0.0000            0.0000            0.0000  (   0.00%)
-memory            22.4442        9.6044e-02            0.0000           22.5402  (   2.32%)
+memory            17.2084        9.6517e-02            0.0000           17.3049  (   1.77%)
 black_box          0.0000            0.0000            0.0000            0.0000  (   0.00%)
-clock_network    426.9823            0.0000            0.0000          426.9823  (  43.99%)  i
-register          17.0133            0.8687        6.5541e+07           83.4225  (   8.60%)
+clock_network    427.2391            0.0000            0.0000          427.2391  (  43.65%)  i
+register          17.1348            0.8265        6.9444e+07           87.4047  (   8.93%)
 sequential         0.0000            0.0000            0.0000            0.0000  (   0.00%)
-combinational      9.3816            4.2547        4.2397e+08          437.6030  (  45.09%)
+combinational      7.6604            3.6522        4.3549e+08          446.8013  (  45.65%)
 --------------------------------------------------------------------------------------------------
-Total            475.8214 uW         5.2195 uW     4.8951e+08 pW       970.5480 uW
+Total            469.2427 uW         4.5751 uW     5.0493e+08 pW       978.7501 uW
 1

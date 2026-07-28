@@ -3,7 +3,7 @@
 Report : area
 Design : top
 Version: W-2024.09-SP5-1
-Date   : Mon Jul 27 16:18:01 2026
+Date   : Mon Jul 27 17:59:51 2026
 ****************************************
 
 Library(s) Used:
@@ -14,22 +14,22 @@ Library(s) Used:
     saed32sramlp_ss0p75v125c_i0p75v (File: /home/synuser17/riscv/pdk/DBs/saed32sramlp_ss0p75v125c_i0p75v.db)
 
 Number of ports:                          212
-Number of nets:                          8001
-Number of cells:                         7101
-Number of combinational cells:           5637
+Number of nets:                          8308
+Number of cells:                         7373
+Number of combinational cells:           5907
 Number of sequential cells:              1451
 Number of macros/black boxes:               2
-Number of buf/inv:                        543
-Number of references:                      91
+Number of buf/inv:                        518
+Number of references:                      90
 
-Combinational area:              14685.711243
-Buf/Inv area:                      752.012102
-Noncombinational area:            9591.903162
-Macro/Black Box area:            56866.828125
-Net Interconnect area:           10936.405693
+Combinational area:              15074.297359
+Buf/Inv area:                      717.702658
+Noncombinational area:            9592.919738
+Macro/Black Box area:            19056.208984
+Net Interconnect area:            9638.057753
 
-Total cell area:                 81144.442530
-Total area:                      92080.848222
+Total cell area:                 43723.426081
+Total area:                      53361.483834
 
 Hierarchical area distribution
 ------------------------------
@@ -39,9 +39,9 @@ Hierarchical area distribution
 Hierarchical cell                 Absolute    Percent  Combi-      Noncombi-  Black-
                                   Total       Total    national    national   boxes       Design
 --------------------------------  ----------  -------  ----------  ---------  ----------  -------------
-top                               81144.4425    100.0   6072.7709  3037.0209  56866.8281  top
-u_regfile                         15167.8226     18.7   8612.9403  6554.8823      0.0000  register_file
+top                               43723.4261    100.0   6140.1191  3038.0375  19056.2090  top
+u_regfile                         15489.0605     35.4   8934.1783  6554.8823      0.0000  register_file
 --------------------------------  ----------  -------  ----------  ---------  ----------  -------------
-Total                                                  14685.7112  9591.9032  56866.8281
+Total                                                  15074.2974  9592.9197  19056.2090
 
 1

@@ -4,9 +4,9 @@ module instr_mem (
     output [31:0] instr
 );
 
-    SRAMLP1RW256x32 u_imem (
+    SRAMLP1RW64x32 u_imem (
         .CE  (clk),
-        .A   (addr[9:2]),
+        .A   (addr[7:2]),
         .I   (32'b0),
         .O   (instr),
         .CSB (1'b0),

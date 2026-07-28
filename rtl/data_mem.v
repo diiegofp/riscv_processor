@@ -7,9 +7,9 @@ module data_mem (
     output [31:0] read_data
 );
 
-    SRAMLP1RW256x32 u_dmem (
+    SRAMLP1RW64x32 u_dmem (
         .CE  (clk),
-        .A   (addr[9:2]),
+        .A   (addr[7:2]),
         .I   (write_data),
         .O   (read_data),
         .CSB (~(mem_read | mem_write)),
